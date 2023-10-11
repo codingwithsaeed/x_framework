@@ -10,11 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  connectivity_plus: ^5.0.0
-  dartz: ^0.10.1
-  http: ^1.1.0
-  equatable: ^2.0.5
-  shared_preferences: ^2.2.2
   flutter_svg: ^2.0.7
   another_flushbar: ^1.12.30
 
