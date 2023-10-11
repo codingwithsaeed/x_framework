@@ -1,0 +1,35 @@
+name: x_framework
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.1.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  connectivity_plus: ^5.0.0
+  dartz: ^0.10.1
+  http: ^1.1.0
+  equatable: ^2.0.5
+  shared_preferences: ^2.2.2
+  flutter_svg: ^2.0.7
+  another_flushbar: ^1.12.30
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+  fonts:
+    - family: vazir
+      fonts:
+        - asset: assets/fonts/vazir.ttf
+    - family: iransans
+      fonts:
+        - asset: assets/fonts/iransans.ttf
