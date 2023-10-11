@@ -56,28 +56,28 @@ extension ThemeExtensions on BuildContext {
   TextStyle get primaryBodyMedium => _textTheme.bodyMedium!.copyWith(color: primaryColor);
   TextStyle get primaryBodySmall => _textTheme.bodySmall!.copyWith(color: primaryColor);
 
-  ColorScheme get _colorScheme => theme.colorScheme;
+  ColorScheme get scheme => theme.colorScheme;
 
-  Color get primaryColor => _colorScheme.primary;
-  Color get secondaryColor => _colorScheme.secondary;
-  Color get backgroundColor => _colorScheme.background;
-  Color get primaryContainerColor => _colorScheme.primaryContainer;
-  Color get surfaceColor => _colorScheme.surface;
-  Color get outlineColor => _colorScheme.outline;
-  Color get scrimColor => _colorScheme.scrim;
-  Color get errorColor => _colorScheme.error;
-  Color get onPrimaryColor => _colorScheme.onPrimary;
-  Color get onSecondaryColor => _colorScheme.onSecondary;
-  Color get onBackgroundColor => _colorScheme.onBackground;
-  Color get onSurfaceColor => _colorScheme.onSurface;
-  Color get onSurfaceVarientColor => _colorScheme.onSurfaceVariant;
-  Color get onErrorColor => _colorScheme.onError;
-  Color get onPrimaryContainerColor => _colorScheme.onPrimaryContainer;
-  Color get onSecondaryContainerColor => _colorScheme.onSecondaryContainer;
+  Color get primaryColor => scheme.primary;
+  Color get secondaryColor => scheme.secondary;
+  Color get backgroundColor => scheme.background;
+  Color get primaryContainerColor => scheme.primaryContainer;
+  Color get surfaceColor => scheme.surface;
+  Color get outlineColor => scheme.outline;
+  Color get scrimColor => scheme.scrim;
+  Color get errorColor => scheme.error;
+  Color get onPrimaryColor => scheme.onPrimary;
+  Color get onSecondaryColor => scheme.onSecondary;
+  Color get onBackgroundColor => scheme.onBackground;
+  Color get onSurfaceColor => scheme.onSurface;
+  Color get onSurfaceVarientColor => scheme.onSurfaceVariant;
+  Color get onErrorColor => scheme.onError;
+  Color get onPrimaryContainerColor => scheme.onPrimaryContainer;
+  Color get onSecondaryContainerColor => scheme.onSecondaryContainer;
   Color get primaryOrLightColor => isLight ? primaryColor : onBackgroundColor;
 
-  bool get isDark => _colorScheme.brightness == Brightness.dark;
-  bool get isLight => _colorScheme.brightness == Brightness.light;
+  bool get isDark => scheme.brightness == Brightness.dark;
+  bool get isLight => scheme.brightness == Brightness.light;
 }
 
 extension NavigateExtensions on BuildContext {
