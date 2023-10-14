@@ -55,6 +55,6 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: XAppBar(title: 'Second Screen'), body: const Center(child: XText('Second Screen')));
+    return const Scaffold(appBar: XAppBar(title: 'Second Screen'), body: Center(child: XText('Second Screen')));
   }
 }
