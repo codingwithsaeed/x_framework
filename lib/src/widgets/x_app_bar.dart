@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:x_framework/x_framework.dart';
 
@@ -12,6 +13,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color? iconBorderColor;
   final Widget? content;
   final bool leadingBadge;
+  final bool hasBack;
+  final double? height;
 
   const XAppBar({
     Key? key,
@@ -23,6 +26,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.iconColor,
     this.iconBorderColor,
     this.content,
+    this.height,
+    this.hasBack = true,
     this.leadingBadge = false,
   }) : super(key: key);
 
@@ -36,12 +41,21 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Stack(
           textDirection: TextDirection.ltr,
           children: [
-            Align(alignment: Alignment.centerLeft, child: _buildButton(context, XAssets.arrowLeft, onBack)),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: hasBack
+                  ? _buildButton(
+                      context,
+                      XAssets.arrowLeft,
+                      onBack ?? () => context.pop(),
+                    )
+                  : const SizedBox(),
+            ),
             Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 60),
-                child: content ?? XText(title),
+                padding: EdgeInsets.only(left: 20.h, right: 20.h),
+                child: content ?? XText(title, style: context.titleMedium),
               ),
             ),
             Align(
@@ -60,9 +74,9 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     return GestureDetector(
       onTap: onPressed ?? onBack,
       child: Container(
-        width: 40,
-        height: 40,
-        margin: const EdgeInsets.symmetric(horizontal: XDimens.padding),
+        width: 40.h,
+        height: 40.h,
+        margin: EdgeInsets.all(XDimens.sPadding.h),
         decoration: BoxDecoration(
           color: color ?? context.primaryContainerColor,
           border: Border.all(
@@ -74,6 +88,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Center(
           child: SvgPicture.asset(
             asset,
+            package: 'x_framework',
             colorFilter: ColorFilter.mode(
               iconColor ?? context.onPrimaryContainerColor,
               BlendMode.srcIn,
@@ -88,8 +103,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     return GestureDetector(
       onTap: onPressed ?? onBack,
       child: Container(
-        width: 40,
-        height: 40,
+        width: 40.h,
+        height: 40.h,
         margin: const EdgeInsets.symmetric(horizontal: XDimens.padding),
         decoration: BoxDecoration(
           color: color ?? context.primaryContainerColor,
@@ -121,5 +136,5 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(height ?? 56.h);
 }

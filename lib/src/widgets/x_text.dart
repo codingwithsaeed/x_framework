@@ -10,7 +10,7 @@ class XText extends StatelessWidget {
   final TextDirection? direction;
   final TextAlign? align;
   final int? maxLines;
-
+  final VoidCallback? onTap;
   const XText(
     this.text, {
     super.key,
@@ -20,6 +20,7 @@ class XText extends StatelessWidget {
     this.align,
     this.direction,
     this.maxLines,
+    this.onTap,
     this.margin = EdgeInsets.zero,
   });
 
@@ -27,17 +28,20 @@ class XText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: margin,
-      child: Text(
-        text,
-        textAlign: align ?? TextAlign.right,
-        textDirection: direction,
-        maxLines: maxLines ?? 1,
-        overflow: TextOverflow.ellipsis,
-        style: style?.copyWith(color: color ?? context.onPrimaryContainerColor, fontSize: size) ??
-            context.bodyMedium.copyWith(
-              color: color ?? context.onPrimaryContainerColor,
-              fontSize: size,
-            ),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Text(
+          text,
+          textAlign: align ?? TextAlign.right,
+          textDirection: direction,
+          maxLines: maxLines ?? 1,
+          overflow: TextOverflow.ellipsis,
+          style: style?.copyWith(color: color ?? context.onPrimaryContainerColor, fontSize: size) ??
+              context.bodyMedium.copyWith(
+                color: color ?? context.onPrimaryContainerColor,
+                fontSize: size,
+              ),
+        ),
       ),
     );
   }
