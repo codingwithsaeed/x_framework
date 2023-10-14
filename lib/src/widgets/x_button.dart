@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_framework/x_framework.dart';
 
 class XButton extends StatelessWidget {
@@ -49,8 +50,8 @@ class XButton extends StatelessWidget {
       color: color ?? context.primaryColor,
       child: isLoading
           ? SizedBox(
-              width: ((height ?? 35) / 2.5),
-              height: ((height ?? 35) / 2.5),
+              width: ((height ?? 35.h) / 2.5.h),
+              height: ((height ?? 35.h) / 2.5.h),
               child: CircularProgressIndicator(
                 strokeWidth: 2,
                 color: color != context.primaryColor ? context.primaryColor : context.onPrimaryContainerColor,

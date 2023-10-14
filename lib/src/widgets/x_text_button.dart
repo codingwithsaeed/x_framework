@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_framework/x_framework.dart';
 
 class XTextButton extends StatelessWidget {
@@ -40,7 +41,7 @@ class XTextButton extends StatelessWidget {
     final onButtonColor = color == null ? context.onPrimaryColor : context.onBackgroundColor;
     return MaterialButton(
       minWidth: width,
-      height: height ?? 35,
+      height: height ?? 35.h,
       elevation: elevation,
       disabledColor: disableColor ?? context.primaryColor.withOpacity(0.5),
       shape: RoundedRectangleBorder(
@@ -51,10 +52,10 @@ class XTextButton extends StatelessWidget {
       color: color ?? context.primaryColor,
       child: isLoading
           ? SizedBox(
-              width: (height ?? 35) / 2.5,
-              height: (height ?? 35) / 2.5,
+              width: (height ?? 35.h) / 2.5.h,
+              height: (height ?? 35.h) / 2.5.h,
               child: XLoading(
-                thickness: 1.5,
+                thickness: 1.5.h,
                 color: loadingColor ?? onButtonColor,
               ),
             )
