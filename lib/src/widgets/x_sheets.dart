@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_framework/x_framework.dart';
 
 abstract class XSheets {
@@ -98,11 +99,12 @@ abstract class XSheets {
                           ),
                         ],
                       ),
-                      const SizedBox(height: XDimens.xsPadding),
+                      SizedBox(height: XDimens.xsPadding.h),
                       Padding(
                         padding: padding ??
                             const EdgeInsets.fromLTRB(
-                                XDimens.padding, XDimens.xsPadding, XDimens.padding, XDimens.padding),
+                                    XDimens.sPadding, XDimens.xsPadding, XDimens.sPadding, XDimens.sPadding)
+                                .h,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -111,7 +113,7 @@ abstract class XSheets {
                                 ? Text(
                                     title,
                                     textAlign: TextAlign.center,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    style: context.titleLarge.copyWith(
                                         overflow: TextOverflow.ellipsis, fontSize: titleFontSize, color: titleColored),
                                   )
                                 : const SizedBox(),
@@ -126,12 +128,13 @@ abstract class XSheets {
                                 ),
                                 textAlign: centerContent ? TextAlign.center : TextAlign.start,
                               ),
-                            if (content != null || contentWidget != null) const SizedBox(height: XDimens.padding),
+                            if (content != null || contentWidget != null && actions != null)
+                              SizedBox(height: XDimens.sPadding.h),
                             actions ?? const SizedBox(),
-                            if (hasCancelButton) const SizedBox(height: XDimens.sPadding),
-                            if (hasCancelButton)
+                            if (hasCancelButton) ...[
+                              SizedBox(height: XDimens.sPadding.h),
                               XTextButton(
-                                height: 35,
+                                height: 35.h,
                                 color: context.backgroundColor,
                                 borderColor: context.isLight
                                     ? context.onPrimaryContainerColor.withOpacity(0.7)
@@ -142,6 +145,7 @@ abstract class XSheets {
                                     ? context.onPrimaryContainerColor.withOpacity(0.7)
                                     : context.onBackgroundColor,
                               ),
+                            ],
                           ],
                         ),
                       ),
@@ -159,6 +163,7 @@ abstract class XSheets {
   static Future<T?> showCustomSheet<T>(
     BuildContext context, {
     required Widget content,
+    EdgeInsetsGeometry? contentPadding,
     Color? backgroundColor,
     bool isDissmissable = true,
     double? maxHeight,
@@ -182,7 +187,8 @@ abstract class XSheets {
           padding: mediaQueryData.viewInsets,
           child: Container(
             constraints: BoxConstraints(maxHeight: maxHeight ?? 0.8 * mediaQueryData.size.height),
-            padding: const EdgeInsets.fromLTRB(XDimens.sPadding, XDimens.xsPadding, XDimens.sPadding, XDimens.sPadding),
+            padding: contentPadding ??
+                const EdgeInsets.fromLTRB(XDimens.sPadding, XDimens.xsPadding, XDimens.sPadding, XDimens.sPadding).h,
             margin: const EdgeInsets.all(XDimens.sPadding),
             decoration: BoxDecoration(
               color: backgroundColor ?? context.backgroundColor,
@@ -203,7 +209,7 @@ abstract class XSheets {
                     ),
                   ],
                 ),
-                const SizedBox(height: XDimens.sPadding),
+                SizedBox(height: XDimens.sPadding.h),
                 Expanded(child: content),
               ],
             ),
