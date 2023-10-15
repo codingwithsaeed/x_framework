@@ -131,10 +131,9 @@ abstract class XSheets {
                                 ),
                                 textAlign: centerContent ? TextAlign.center : TextAlign.start,
                               ),
-                            if ((content != null || contentWidget != null) && actions != null) ...[
+                            if ((content != null || contentWidget != null) || actions != null)
                               SizedBox(height: XDimens.sPadding.h),
-                              actions,
-                            ],
+                            if (actions != null) actions,
                             if (hasCancelButton) ...[
                               SizedBox(height: XDimens.sPadding.h),
                               XTextButton(
