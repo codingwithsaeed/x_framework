@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_framework/x_framework.dart';
 
 class XTextField extends StatefulWidget {
@@ -23,6 +24,9 @@ class XTextField extends StatefulWidget {
     this.prefixText,
     this.direction,
     this.align,
+    this.contentPadding,
+    this.showErrorInside = false,
+    this.isDense = true,
   }) : super(key: key);
   final TextEditingController? controller;
   final bool isMultiLine;
@@ -42,57 +46,72 @@ class XTextField extends StatefulWidget {
   final String? prefixText;
   final TextDirection? direction;
   final TextAlign? align;
+  final bool showErrorInside;
+  final bool isDense;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
-  State<XTextField> createState() => _XTextFieldState();
+  State<XTextField> createState() => _XTextField2State();
 }
 
-class _XTextFieldState extends State<XTextField> {
+class _XTextField2State extends State<XTextField> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: ((widget.error == null || widget.error!.isEmpty) && widget.maxLength == null)
-          ? EdgeInsets.zero
-          : const EdgeInsets.only(bottom: XDimens.padding),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(XDimens.sPadding),
-          color: widget.color ?? context.primaryContainerColor,
-          border: Border.all(color: widget.borderColor ?? context.outlineColor)),
-      child: TextField(
-        autofocus: widget.autoFocus,
-        maxLength: widget.maxLength,
-        inputFormatters: widget.inputFormatters,
-        controller: widget.controller,
-        onChanged: widget.onChange,
-        textDirection: widget.direction,
-        textAlign: widget.align ?? TextAlign.start,
-        onTap: () {
-          if (widget.controller != null) {
-            if (widget.controller!.selection ==
-                TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length - 1))) {
-              setState(() {
-                widget.controller!.selection =
-                    TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length));
-              });
-            }
-          }
-        },
-        style: context.bodyMedium.copyWith(color: widget.textColor ?? context.onPrimaryContainerColor),
-        keyboardType: widget.textInputType,
-        textInputAction: widget.textInputAction,
-        decoration: InputDecoration(
-            suffixText: widget.prefixText,
-            errorText: widget.error,
-            prefixStyle: context.primaryTitleSmall,
-            suffixStyle: context.primaryTitleSmall,
-            hintStyle:
-                context.bodySmall.copyWith(color: widget.hintColor ?? context.onPrimaryContainerColor),
-            icon: widget.icon,
-            hintText: widget.hint,
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: widget.icon == null ? 16 : 0, vertical: 8)),
-        maxLines: widget.isMultiLine ? 4 : 1,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          padding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: XDimens.sPadding.h).h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(XDimens.sPadding),
+              color: widget.color ?? context.primaryContainerColor,
+              border: Border.all(color: widget.borderColor ?? context.outlineColor)),
+          child: TextField(
+            autofocus: widget.autoFocus,
+            maxLength: widget.maxLength,
+            inputFormatters: widget.inputFormatters,
+            controller: widget.controller,
+            onChanged: widget.onChange,
+            textDirection: widget.direction,
+            textAlign: widget.align ?? TextAlign.start,
+            onTap: () {
+              if (widget.controller != null) {
+                if (widget.controller!.selection ==
+                    TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length - 1))) {
+                  setState(() {
+                    widget.controller!.selection =
+                        TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length));
+                  });
+                }
+              }
+            },
+            style: context.bodyMedium.copyWith(color: widget.textColor ?? context.onPrimaryContainerColor),
+            keyboardType: widget.textInputType,
+            textInputAction: widget.textInputAction,
+            decoration: InputDecoration(
+              suffixText: widget.prefixText,
+              errorText: widget.showErrorInside ? widget.error : null,
+              prefixStyle: context.primaryTitleSmall,
+              suffixStyle: context.primaryTitleSmall,
+              hintStyle: context.bodySmall.copyWith(color: widget.hintColor ?? context.onPrimaryContainerColor),
+              icon: widget.icon,
+              isDense: widget.isDense,
+              hintText: widget.hint,
+              border: InputBorder.none,
+            ),
+            maxLines: widget.isMultiLine ? 4 : 1,
+          ),
+        ),
+        if (widget.error != null && widget.error!.isNotEmpty && !widget.showErrorInside) ...[
+          SizedBox(height: XDimens.sPadding.h),
+          XText(
+            widget.error!,
+            color: context.errorColor,
+            align: TextAlign.start,
+            margin: EdgeInsetsDirectional.only(start: XDimens.sPadding.h),
+          ),
+        ]
+      ],
     );
   }
 }

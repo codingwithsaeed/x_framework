@@ -23,6 +23,5 @@ export 'src/widgets/x_svg.dart';
 export 'src/widgets/x_text_button.dart';
 export 'src/widgets/x_text_divider.dart';
 export 'src/widgets/x_text_field.dart';
-export 'src/widgets/x_text_field2.dart';
 export 'src/widgets/x_text.dart';
 export 'src/widgets/x_twin_buttons.dart';
