@@ -85,7 +85,7 @@ abstract class XSheets {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const SizedBox(height: XDimens.xsPadding),
+                      SizedBox(height: XDimens.xsPadding.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -103,21 +103,24 @@ abstract class XSheets {
                       Padding(
                         padding: padding ??
                             const EdgeInsets.fromLTRB(
-                                    XDimens.sPadding, XDimens.xsPadding, XDimens.sPadding, XDimens.sPadding)
-                                .h,
+                              XDimens.sPadding,
+                              XDimens.xsPadding,
+                              XDimens.sPadding,
+                              XDimens.sPadding,
+                            ).h,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            title != null
-                                ? Text(
-                                    title,
-                                    textAlign: TextAlign.center,
-                                    style: context.titleLarge.copyWith(
-                                        overflow: TextOverflow.ellipsis, fontSize: titleFontSize, color: titleColored),
-                                  )
-                                : const SizedBox(),
-                            title != null ? const SizedBox(height: XDimens.padding) : const SizedBox(),
+                            if (title != null) ...[
+                              Text(
+                                title,
+                                textAlign: TextAlign.center,
+                                style: context.titleLarge.copyWith(
+                                    overflow: TextOverflow.ellipsis, fontSize: titleFontSize, color: titleColored),
+                              ),
+                              SizedBox(height: XDimens.padding.h)
+                            ],
                             if (contentWidget != null) contentWidget,
                             if (content != null)
                               Text(
@@ -128,9 +131,10 @@ abstract class XSheets {
                                 ),
                                 textAlign: centerContent ? TextAlign.center : TextAlign.start,
                               ),
-                            if (content != null || contentWidget != null && actions != null)
+                            if ((content != null || contentWidget != null) && actions != null) ...[
                               SizedBox(height: XDimens.sPadding.h),
-                            actions ?? const SizedBox(),
+                              actions,
+                            ],
                             if (hasCancelButton) ...[
                               SizedBox(height: XDimens.sPadding.h),
                               XTextButton(

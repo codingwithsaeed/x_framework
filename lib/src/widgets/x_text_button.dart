@@ -13,8 +13,8 @@ class XTextButton extends StatelessWidget {
   final Color? borderColor;
   final Color? disableColor;
   final bool isLoading;
-  final double radius;
-  final double width;
+  final double? radius;
+  final double? minWidth;
   final double? height;
   final double elevation;
 
@@ -26,8 +26,8 @@ class XTextButton extends StatelessWidget {
     this.borderColor,
     this.disableColor,
     this.height,
-    this.width = double.infinity,
-    this.radius = XDimens.sPadding,
+    this.minWidth,
+    this.radius,
     this.elevation = 0,
     this.isLoading = false,
     this.textColor,
@@ -39,33 +39,23 @@ class XTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onButtonColor = color == null ? context.onPrimaryColor : context.onBackgroundColor;
-    return MaterialButton(
-      minWidth: width,
+    return XButton(
+      minWidth: minWidth,
       height: height ?? 35.h,
       elevation: elevation,
-      disabledColor: disableColor ?? context.primaryColor.withOpacity(0.5),
-      shape: RoundedRectangleBorder(
-        side: BorderSide(color: borderColor ?? Colors.transparent, width: 1),
-        borderRadius: BorderRadius.circular(radius),
+      isLoading: isLoading,
+      borderColor: borderColor,
+      radius: radius,
+      disabledColor: disableColor,
+      onTap: onTap,
+      color: color,
+      child: XText(
+        text,
+        style: textStyle?.copyWith(color: textColor ?? onButtonColor, fontSize: textSize),
+        color: textColor ?? onButtonColor,
+        size: textSize,
+        align: TextAlign.center,
       ),
-      onPressed: isLoading ? null : onTap,
-      color: color ?? context.primaryColor,
-      child: isLoading
-          ? SizedBox(
-              width: (height ?? 35.h) / 2.5.h,
-              height: (height ?? 35.h) / 2.5.h,
-              child: XLoading(
-                thickness: 1.5.h,
-                color: loadingColor ?? onButtonColor,
-              ),
-            )
-          : XText(
-              text,
-              style: textStyle?.copyWith(color: textColor ?? onButtonColor, fontSize: textSize),
-              color: textColor ?? onButtonColor,
-              size: textSize,
-              align: TextAlign.center,
-            ),
     );
   }
 }

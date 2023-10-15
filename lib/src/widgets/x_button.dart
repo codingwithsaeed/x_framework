@@ -4,7 +4,7 @@ import 'package:x_framework/x_framework.dart';
 
 class XButton extends StatelessWidget {
   final Widget child;
-  final VoidCallback? onPressed;
+  final VoidCallback? onTap;
   final Color? color;
   final Color? borderColor;
   final Color? disabledColor;
@@ -19,7 +19,7 @@ class XButton extends StatelessWidget {
   const XButton({
     Key? key,
     required this.child,
-    this.onPressed,
+    this.onTap,
     this.color,
     this.disabledColor,
     this.borderColor,
@@ -36,7 +36,7 @@ class XButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       minWidth: minWidth,
-      height: height,
+      height: height ?? 35.h,
       elevation: elevation,
       highlightColor: highlightColor,
       splashColor: splashColor,
@@ -46,7 +46,7 @@ class XButton extends StatelessWidget {
         side: BorderSide(color: borderColor ?? context.primaryColor, width: 1),
         borderRadius: BorderRadius.circular(radius ?? XDimens.sPadding),
       ),
-      onPressed: isLoading ? () {} : onPressed,
+      onPressed: isLoading ? null : onTap,
       color: color ?? context.primaryColor,
       child: isLoading
           ? SizedBox(
