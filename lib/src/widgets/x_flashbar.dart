@@ -41,9 +41,11 @@ abstract class XFlashbar {
     Color? backgroundColor,
     Color? barColor,
     Color? textColor,
+    double? textSize,
   }) {
     Flushbar(
       message: text,
+      messageSize: textSize,
       icon: Icon(type.icon, size: XDimens.lPadding, color: barColor ?? type.color),
       margin: const EdgeInsets.all(XDimens.sPadding),
       flushbarStyle: FlushbarStyle.FLOATING,
