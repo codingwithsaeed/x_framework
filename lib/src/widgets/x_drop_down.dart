@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:x_framework/x_framework.dart';
 
 class XDropDown<T> extends StatelessWidget {
@@ -35,20 +36,36 @@ class XDropDown<T> extends StatelessWidget {
           title: hint ?? 'انتخاب کنید',
           titleFontSize: 14,
           hasCancelButton: false,
-          actions: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: items
-                .map((e) => XTextButton(
-                      text: e.toString(),
-                      color: context.primaryContainerColor,
-                      borderColor: context.outlineColor,
-                      onTap: () {
-                        context.pop();
-                        onChanged?.call(e);
-                      },
-                    ))
-                .toList(),
+          contentWidget: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (_, index) => XTextButton(
+              text: items[index].toString(),
+              color: context.primaryContainerColor,
+              borderColor: context.outlineColor,
+              onTap: () {
+                context.pop();
+                onChanged?.call(items[index]);
+              },
+            ),
+            separatorBuilder: (_, __) => SizedBox(height: XDimens.sPadding.h),
+            itemCount: items.length,
           ),
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.stretch,
+          //   children: items
+          //       .map(
+          //         (e) => XTextButton(
+          //           text: e.toString(),
+          //           color: context.primaryContainerColor,
+          //           borderColor: context.outlineColor,
+          //           onTap: () {
+          //             context.pop();
+          //             onChanged?.call(e);
+          //           },
+          //         ),
+          //       )
+          //       .toList(),
+          // ),
         );
       },
       child: Container(
@@ -66,14 +83,16 @@ class XDropDown<T> extends StatelessWidget {
                   value.isEmpty ? 'انتخاب کنید' : value,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  textAlign: centerTitle ? TextAlign.center : TextAlign.right,
+                  textAlign: centerTitle ? TextAlign.center : TextAlign.start,
                   textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
                   style: context.bodyMedium.copyWith(
                       color: context.onPrimaryContainerColor,
                       fontFamily: isRtl ? XFonts.iransans.name : XFonts.vazir.name),
                 ),
               ),
-              showIcon ? XSvg(asset: XAssets.arrowDown, color: iconColor ?? context.outlineColor) : const SizedBox(),
+              showIcon
+                  ? XSvg(asset: XAssets.arrowDown, color: iconColor ?? context.outlineColor, package: 'x_framework')
+                  : const SizedBox(),
             ],
           ),
         ),

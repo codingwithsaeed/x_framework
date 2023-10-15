@@ -112,15 +112,14 @@ abstract class XSheets {
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            if (title != null) ...[
+                            if (title != null)
                               Text(
                                 title,
                                 textAlign: TextAlign.center,
                                 style: context.titleLarge.copyWith(
                                     overflow: TextOverflow.ellipsis, fontSize: titleFontSize, color: titleColored),
                               ),
-                              SizedBox(height: XDimens.padding.h)
-                            ],
+                            if (contentWidget != null || content != null) SizedBox(height: XDimens.sPadding.h),
                             if (contentWidget != null) contentWidget,
                             if (content != null)
                               Text(

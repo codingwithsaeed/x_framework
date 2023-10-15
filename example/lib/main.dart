@@ -26,26 +26,35 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   final String title;
   const MyHomePage({super.key, required this.title});
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int selected = 1;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: XAppBar(
-        title: title,
+        title: widget.title,
         color: context.primaryColor.withOpacity(0.2),
       ),
-      body: Center(
-        child: XText('go to second page', onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) {
-              return const SecondScreen();
-            }),
-          );
-        }),
-      ),
+      body: Padding(
+        padding: EdgeInsets.all(XDimens.sPadding.h),
+        child: XDropDown(
+          items: const [1, 2, 3, 4, 5, 6],
+          isRtl: false,
+          centerTitle: true,
+          value: selected.toString(),
+          onChanged: (selected) => setState(() {
+            if (selected != null) this.selected = selected;
+          }),
+        ),
+      ).center(),
     );
   }
 }

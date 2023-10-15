@@ -8,9 +8,11 @@ class XSvg extends StatelessWidget {
   final double? height;
   final Color? color;
   final bool applyNightMode;
+  final String? package;
   const XSvg({
     super.key,
     required this.asset,
+    this.package,
     this.width,
     this.height,
     this.color,
@@ -26,9 +28,11 @@ class XSvg extends StatelessWidget {
                     asset,
                     width: width,
                     height: height,
+                    package: package,
                   )
                 : SvgPicture.asset(
                     asset,
+                     package: package,
                     width: width,
                     height: height,
                     colorFilter: ColorFilter.mode(
@@ -40,6 +44,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
+                 package: package,
                 colorFilter: ColorFilter.mode(
                   color!,
                   BlendMode.srcIn,
@@ -50,6 +55,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
+                 package: package,
                 colorFilter: ColorFilter.mode(
                   color!,
                   BlendMode.srcIn,
@@ -59,6 +65,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
+                 package: package,
               );
   }
 }
