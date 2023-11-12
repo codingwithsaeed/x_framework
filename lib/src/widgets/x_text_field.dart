@@ -27,9 +27,12 @@ class XTextField extends StatefulWidget {
     this.contentPadding,
     this.showErrorInside = false,
     this.isDense = true,
+    this.title,
+    this.centerTitle = false,
   }) : super(key: key);
   final TextEditingController? controller;
   final bool isMultiLine;
+  final bool centerTitle;
   final void Function(String)? onChange;
   final Color? color;
   final Color? hintColor;
@@ -37,6 +40,7 @@ class XTextField extends StatefulWidget {
   final Color? borderColor;
   final Widget? icon;
   final String? hint;
+  final String? title;
   final String? error;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
@@ -60,6 +64,14 @@ class _XTextField2State extends State<XTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (widget.title != null) ...[
+          XText(
+            widget.title ?? '',
+            align: widget.centerTitle ? TextAlign.center : TextAlign.start,
+            style: context.titleSmall,
+          ),
+          SizedBox(height: XDimens.xsPadding.h),
+        ],
         Container(
           padding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: XDimens.sPadding.h).h,
           decoration: BoxDecoration(

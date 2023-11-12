@@ -45,14 +45,21 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(XDimens.sPadding.h),
-        child: XDropDown(
-          items: const [1, 2, 3, 4, 5, 6],
-          isRtl: false,
-          title: 'انتخاب کنید',
-          value: selected.toString(),
-          onChanged: (selected) => setState(() {
-            if (selected != null) this.selected = selected;
-          }),
+        child: Column(
+          children: [
+            const XTextField(
+              title: 'عنوان'
+            ),
+            XDropDown(
+              items: const [1, 2, 3, 4, 5, 6],
+              isRtl: false,
+              title: 'انتخاب کنید',
+              value: selected.toString(),
+              onChanged: (selected) => setState(() {
+                if (selected != null) this.selected = selected;
+              }),
+            ),
+          ],
         ),
       ).center(),
     );
