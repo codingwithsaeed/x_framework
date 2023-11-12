@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: XDropDown(
           items: const [1, 2, 3, 4, 5, 6],
           isRtl: false,
-          centerTitle: true,
+          title: 'انتخاب کنید',
           value: selected.toString(),
           onChanged: (selected) => setState(() {
             if (selected != null) this.selected = selected;

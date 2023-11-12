@@ -6,7 +6,6 @@ class XDropDown<T> extends StatelessWidget {
   const XDropDown({
     Key? key,
     this.showIcon = true,
-    this.centerTitle = false,
     this.isRtl = true,
     this.iconColor,
     this.borderColor,
@@ -15,6 +14,9 @@ class XDropDown<T> extends StatelessWidget {
     this.onChanged,
     this.hint,
     this.backgroundColor,
+    this.centerValue = false,
+    this.centerTitle = false,
+    this.title,
   }) : super(key: key);
   final String? hint;
   final String value;
@@ -22,6 +24,8 @@ class XDropDown<T> extends StatelessWidget {
   final Color? backgroundColor;
   final List<T> items;
   final void Function(T?)? onChanged;
+  final bool centerValue;
+  final String? title;
   final bool centerTitle;
   final bool isRtl;
   final Color? iconColor;
@@ -68,34 +72,47 @@ class XDropDown<T> extends StatelessWidget {
           // ),
         );
       },
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(XDimens.sPadding),
-            color: backgroundColor ?? context.primaryContainerColor,
-            border: Border.all(color: borderColor ?? context.outlineColor)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Text(
-                  value.isEmpty ? 'انتخاب کنید' : value,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: centerTitle ? TextAlign.center : TextAlign.start,
-                  textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
-                  style: context.bodyMedium.copyWith(
-                      color: context.onPrimaryContainerColor,
-                      fontFamily: isRtl ? XFonts.iransans.name : XFonts.vazir.name),
-                ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (title != null) ...[
+            XText(
+              title ?? '',
+              align: centerTitle ? TextAlign.center : TextAlign.start,
+              style: context.titleSmall,
+            ),
+            SizedBox(height: XDimens.xsPadding.h),
+          ],
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(XDimens.sPadding),
+                color: backgroundColor ?? context.primaryContainerColor,
+                border: Border.all(color: borderColor ?? context.outlineColor)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      value.isEmpty ? 'انتخاب کنید' : value,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: centerTitle ? TextAlign.center : TextAlign.start,
+                      textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
+                      style: context.bodyMedium.copyWith(
+                          color: context.onPrimaryContainerColor,
+                          fontFamily: isRtl ? XFonts.iransans.name : XFonts.vazir.name),
+                    ),
+                  ),
+                  showIcon
+                      ? XSvg(asset: XAssets.arrowDown, color: iconColor ?? context.outlineColor, package: 'x_framework')
+                      : const SizedBox(),
+                ],
               ),
-              showIcon
-                  ? XSvg(asset: XAssets.arrowDown, color: iconColor ?? context.outlineColor, package: 'x_framework')
-                  : const SizedBox(),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
