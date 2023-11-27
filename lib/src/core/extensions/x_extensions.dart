@@ -75,7 +75,7 @@ extension ThemeExtensions on BuildContext {
   Color get onPrimaryContainerColor => scheme.onPrimaryContainer;
   Color get onSecondaryContainerColor => scheme.onSecondaryContainer;
   Color get primaryOrLightColor => isLight ? primaryColor : onBackgroundColor;
-
+  Color get OnPrimaryOrLightColor => isLight ? onPrimaryColor : primaryColor;
   bool get isDark => scheme.brightness == Brightness.dark;
   bool get isLight => scheme.brightness == Brightness.light;
 }
