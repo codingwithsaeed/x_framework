@@ -10,6 +10,7 @@ class XButton extends StatelessWidget {
   final Color? disabledColor;
   final Color? highlightColor;
   final Color? splashColor;
+  final Color? loadingColor;
   final bool isLoading;
   final double? radius;
   final double? minWidth;
@@ -30,6 +31,7 @@ class XButton extends StatelessWidget {
     this.elevation = 0,
     this.highlightColor,
     this.splashColor,
+    this.loadingColor,
   }) : super(key: key);
 
   @override
@@ -44,7 +46,7 @@ class XButton extends StatelessWidget {
       disabledColor: disabledColor ?? context.onSurfaceColor.withOpacity(0.3),
       shape: RoundedRectangleBorder(
         side: BorderSide(
-            color: onTap == null ? (disabledColor ??  Colors.transparent) : (borderColor ?? context.primaryColor),
+            color: onTap == null ? (disabledColor ?? Colors.transparent) : (borderColor ?? context.primaryColor),
             width: 1),
         borderRadius: BorderRadius.circular(radius ?? XDimens.sPadding),
       ),
@@ -56,7 +58,9 @@ class XButton extends StatelessWidget {
               height: ((height ?? 35.h) / 2.5.h),
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                color: color != context.primaryColor ? context.primaryColor : context.onPrimaryContainerColor,
+                color: loadingColor ?? (color != context.primaryColor
+                    ? context.primaryColor
+                    : context.onPrimaryContainerColor),
               ),
             )
           : child,

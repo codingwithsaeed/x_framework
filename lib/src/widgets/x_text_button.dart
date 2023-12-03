@@ -47,11 +47,12 @@ class XTextButton extends StatelessWidget {
       borderColor: borderColor,
       radius: radius,
       disabledColor: disableColor,
+      loadingColor: loadingColor,
       onTap: onTap,
       color: color,
       child: XText(
         text,
-        style: textStyle?.copyWith( fontSize: textSize),
+        style: textStyle?.copyWith(fontSize: textSize),
         color: onTap == null ? context.onSurfaceColor : textColor ?? onButtonColor,
         size: textSize,
         align: TextAlign.center,
