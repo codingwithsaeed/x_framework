@@ -42,14 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: XAppBar(
         title: widget.title,
         color: context.primaryColor.withOpacity(0.2),
+        leadingAsset: 'assets/icons/arrow_left_ios.svg',
+        leadingButtonColor: Colors.yellow.shade900,
       ),
       body: Padding(
         padding: EdgeInsets.all(XDimens.sPadding.h),
         child: Column(
           children: [
-            const XTextField(
-              title: 'عنوان'
-            ),
+            const XTextField(title: 'عنوان'),
             XDropDown(
               items: const [1, 2, 3, 4, 5, 6],
               isRtl: false,
