@@ -91,7 +91,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
           color:
-              (boxColor) ?? (color == null ? context.primaryContainerColor : context.onPrimaryColor.withOpacity(0.2)),
+              (boxColor) ?? (color == null ? context.primaryContainerColor : context.onPrimaryColor.withOpacity(0.1)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.outlineColor : context.onPrimaryColor),
             width: 1,
@@ -120,8 +120,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 40.h,
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
-          color: (boxColor ?? color) ??
-              (color == null ? context.primaryContainerColor : context.primaryColor.withOpacity(0.2)),
+          color: (boxColor) ??
+              (color == null ? context.primaryContainerColor : context.primaryColor.withOpacity(0.1)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.outlineColor : context.onPrimaryColor),
             width: 1,
