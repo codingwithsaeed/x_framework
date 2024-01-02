@@ -10,6 +10,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBack;
   final Color? color;
   final Color? leadingButtonColor;
+  final Color? backButtonColor;
   final Color? iconColor;
   final Color? iconBorderColor;
   final Widget? content;
@@ -29,6 +30,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.content,
     this.height,
     this.leadingButtonColor,
+    this.backButtonColor,
     this.hasBack = true,
     this.leadingBadge = false,
   }) : super(key: key);
@@ -49,6 +51,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ? _buildButton(
                       context,
                       XAssets.arrowLeft,
+                      backButtonColor,
                       onBack ?? () => context.pop(),
                     )
                   : const SizedBox(),
@@ -64,7 +67,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.centerRight,
               child: leadingAsset == null
                   ? const SizedBox()
-                  : _buildLeadingButton(context, leadingAsset!, onLeading ?? () {}),
+                  : _buildLeadingButton(context, leadingAsset!, leadingButtonColor, onLeading ?? () {}),
             ),
           ],
         ),
@@ -72,7 +75,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildButton(BuildContext context, String asset, VoidCallback? onPressed) {
+  Widget _buildButton(BuildContext context, String asset, Color? boxColor, VoidCallback? onPressed) {
     return GestureDetector(
       onTap: onPressed ?? onBack,
       child: Container(
@@ -80,7 +83,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 40.h,
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
-          color: (leadingButtonColor ?? color) ?? context.primaryContainerColor,
+          color: (boxColor ?? color) ?? context.primaryContainerColor,
           border: Border.all(
             color: iconBorderColor ?? context.outlineColor,
             width: 1,
@@ -101,7 +104,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildLeadingButton(BuildContext context, String asset, VoidCallback? onPressed) {
+  Widget _buildLeadingButton(BuildContext context, String asset, Color? boxColor, VoidCallback? onPressed) {
     return GestureDetector(
       onTap: onPressed ?? onBack,
       child: Container(
@@ -109,7 +112,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 40.h,
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
-          color: color ?? context.primaryContainerColor,
+          color: (boxColor ?? color) ?? context.primaryContainerColor,
           border: Border.all(
             color: iconBorderColor ?? context.outlineColor,
             width: 1,
