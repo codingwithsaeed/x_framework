@@ -9,6 +9,7 @@ abstract class XSheets {
     BuildContext context,
     VoidCallback onAccept, {
     String? title,
+    String? content,
     String? acceptText,
     String? cancelText,
   }) {
@@ -38,6 +39,7 @@ abstract class XSheets {
         ],
       ),
       title: title ?? 'آیا از حذف  این آیتم اطمینان دارید؟',
+      content: content,
     );
   }
 
