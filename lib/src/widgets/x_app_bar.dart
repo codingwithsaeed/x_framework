@@ -9,6 +9,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onLeading;
   final VoidCallback? onBack;
   final Color? color;
+  final Color? titleColor;
   final Color? leadingButtonColor;
   final Color? backButtonColor;
   final Color? iconColor;
@@ -26,6 +27,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBack,
     this.color,
     this.iconColor,
+    this.titleColor,
     this.iconBorderColor,
     this.content,
     this.height,
@@ -60,7 +62,12 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
               alignment: Alignment.center,
               child: Padding(
                 padding: EdgeInsets.only(left: 20.h, right: 20.h),
-                child: content ?? XText(title, style: context.titleMedium),
+                child: content ??
+                    XText(
+                      title,
+                      style: context.titleMedium,
+                      color: titleColor ?? (color != null ? context.onPrimaryColor : context.onBackgroundColor),
+                    ),
               ),
             ),
             Align(
