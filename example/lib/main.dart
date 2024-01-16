@@ -40,11 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: XAppBar(
+      appBar: XAppBar2(
         title: widget.title,
         color: context.primaryColor,
         leadingAsset: 'assets/icons/arrow_left_ios.svg',
-        leadingButtonColor: Colors.yellow.shade900,
       ),
       body: Padding(
         padding: EdgeInsets.all(XDimens.sPadding.h),
