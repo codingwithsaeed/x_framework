@@ -5,6 +5,7 @@ export 'src/core/consts/x_assets.dart';
 export 'src/core/extensions/x_extensions.dart';
 
 export 'src/widgets/x_app_bar.dart';
+export 'src/widgets/x_app_bar2.dart';
 export 'src/widgets/x_button.dart';
 export 'src/widgets/x_card.dart';
 export 'src/widgets/x_center_text.dart';
