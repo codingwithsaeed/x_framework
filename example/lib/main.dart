@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const XTextField(title: 'عنوان'),
             XDropDown(
-              items: const [1, 2, 3, 4, 5, 6],
+              items: const [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
               isRtl: false,
               title: 'انتخاب کنید',
               value: selected.toString(),

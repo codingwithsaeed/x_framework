@@ -40,36 +40,38 @@ class XDropDown<T> extends StatelessWidget {
           title: hint ?? 'انتخاب کنید',
           titleFontSize: 14,
           hasCancelButton: false,
-          contentWidget: ListView.separated(
-            shrinkWrap: true,
-            itemBuilder: (_, index) => XTextButton(
-              text: items[index].toString(),
-              color: context.primaryContainerColor,
-              borderColor: context.outlineColor,
-              onTap: () {
-                context.pop();
-                onChanged?.call(items[index]);
-              },
+          contentWidget:
+              // ListView.separated(
+              //   itemBuilder: (_, index) => XTextButton(
+              //     text: items[index].toString(),
+              //     color: context.primaryContainerColor,
+              //     borderColor: context.outlineColor,
+              //     onTap: () {
+              //       context.pop();
+              //       onChanged?.call(items[index]);
+              //     },
+              //   ),
+              //   separatorBuilder: (_, __) => SizedBox(height: XDimens.sPadding.h),
+              //   itemCount: items.length,
+              // ),
+              SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: items
+                  .map(
+                    (e) => XTextButton(
+                      text: e.toString(),
+                      color: context.primaryContainerColor,
+                      borderColor: context.outlineColor,
+                      onTap: () {
+                        context.pop();
+                        onChanged?.call(e);
+                      },
+                    ).marginOnly(bottom: XDimens.sPadding.h),
+                  )
+                  .toList(),
             ),
-            separatorBuilder: (_, __) => SizedBox(height: XDimens.sPadding.h),
-            itemCount: items.length,
           ),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.stretch,
-          //   children: items
-          //       .map(
-          //         (e) => XTextButton(
-          //           text: e.toString(),
-          //           color: context.primaryContainerColor,
-          //           borderColor: context.outlineColor,
-          //           onTap: () {
-          //             context.pop();
-          //             onChanged?.call(e);
-          //           },
-          //         ),
-          //       )
-          //       .toList(),
-          // ),
         );
       },
       child: Column(
