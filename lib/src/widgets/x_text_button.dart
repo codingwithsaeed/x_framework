@@ -38,7 +38,7 @@ class XTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final onButtonColor = color == null ? context.onPrimaryColor : context.onBackgroundColor;
+    final onButtonColor = color == null ? context.scheme.onPrimary : context.scheme.onSurface;
     return XButton(
       minWidth: minWidth,
       height: height ?? 35.h,
@@ -53,7 +53,7 @@ class XTextButton extends StatelessWidget {
       child: XText(
         text,
         style: textStyle?.copyWith(fontSize: textSize),
-        color: onTap == null ? context.onSurfaceColor : textColor ?? onButtonColor,
+        color: onTap == null ? context.scheme.inverseSurface : textColor ?? onButtonColor,
         size: textSize,
         align: TextAlign.center,
       ),

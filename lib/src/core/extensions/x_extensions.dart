@@ -45,37 +45,21 @@ extension ThemeExtensions on BuildContext {
   TextStyle get titleLarge => _textTheme.titleLarge!;
   TextStyle get titleMedium => _textTheme.titleMedium!;
   TextStyle get titleSmall => _textTheme.titleSmall!;
-  TextStyle get primaryTitleLarge => _textTheme.titleLarge!.copyWith(color: primaryColor);
-  TextStyle get primaryTitleMedium => _textTheme.titleMedium!.copyWith(color: primaryColor);
-  TextStyle get primaryTitleSmall => _textTheme.titleSmall!.copyWith(color: primaryColor);
+  TextStyle get primaryTitleLarge => _textTheme.titleLarge!.copyWith(color: scheme.primary);
+  TextStyle get primaryTitleMedium => _textTheme.titleMedium!.copyWith(color: scheme.primary);
+  TextStyle get primaryTitleSmall => _textTheme.titleSmall!.copyWith(color: scheme.primary);
 
   TextStyle get bodyLarge => _textTheme.bodyLarge!;
   TextStyle get bodyMedium => _textTheme.bodyMedium!;
   TextStyle get bodySmall => _textTheme.bodySmall!;
-  TextStyle get primaryBodyLarge => _textTheme.bodyLarge!.copyWith(color: primaryColor);
-  TextStyle get primaryBodyMedium => _textTheme.bodyMedium!.copyWith(color: primaryColor);
-  TextStyle get primaryBodySmall => _textTheme.bodySmall!.copyWith(color: primaryColor);
+  TextStyle get primaryBodyLarge => _textTheme.bodyLarge!.copyWith(color: scheme.primary);
+  TextStyle get primaryBodyMedium => _textTheme.bodyMedium!.copyWith(color: scheme.primary);
+  TextStyle get primaryBodySmall => _textTheme.bodySmall!.copyWith(color: scheme.primary);
 
   ColorScheme get scheme => theme.colorScheme;
 
-  Color get primaryColor => scheme.primary;
-  Color get secondaryColor => scheme.secondary;
-  Color get backgroundColor => scheme.background;
-  Color get primaryContainerColor => scheme.primaryContainer;
-  Color get surfaceColor => scheme.surface;
-  Color get outlineColor => scheme.outline;
-  Color get scrimColor => scheme.scrim;
-  Color get errorColor => scheme.error;
-  Color get onPrimaryColor => scheme.onPrimary;
-  Color get onSecondaryColor => scheme.onSecondary;
-  Color get onBackgroundColor => scheme.onBackground;
-  Color get onSurfaceColor => scheme.onSurface;
-  Color get onSurfaceVarientColor => scheme.onSurfaceVariant;
-  Color get onErrorColor => scheme.onError;
-  Color get onPrimaryContainerColor => scheme.onPrimaryContainer;
-  Color get onSecondaryContainerColor => scheme.onSecondaryContainer;
-  Color get primaryOrLightColor => isLight ? primaryColor : onBackgroundColor;
-  Color get onPrimaryOrLightColor => isLight ? onPrimaryColor : primaryColor;
+  Color get primaryOrLightColor => isLight ? scheme.primary : scheme.onSurface;
+  Color get onPrimaryOrLightColor => isLight ? scheme.onPrimary : scheme.primary;
   bool get isDark => scheme.brightness == Brightness.dark;
   bool get isLight => scheme.brightness == Brightness.light;
 }

@@ -76,8 +76,8 @@ class _XTextField2State extends State<XTextField> {
           padding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: XDimens.sPadding.h).h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(XDimens.sPadding),
-              color: widget.color ?? context.primaryContainerColor,
-              border: Border.all(color: widget.borderColor ?? context.outlineColor)),
+              color: widget.color ?? context.scheme.primaryContainer,
+              border: Border.all(color: widget.borderColor ?? context.scheme.outline)),
           child: TextField(
             autofocus: widget.autoFocus,
             maxLength: widget.maxLength,
@@ -97,7 +97,7 @@ class _XTextField2State extends State<XTextField> {
                 }
               }
             },
-            style: context.bodyMedium.copyWith(color: widget.textColor ?? context.onPrimaryContainerColor),
+            style: context.bodyMedium.copyWith(color: widget.textColor ?? context.scheme.onPrimaryContainer),
             keyboardType: widget.textInputType,
             textInputAction: widget.textInputAction,
             decoration: InputDecoration(
@@ -105,7 +105,7 @@ class _XTextField2State extends State<XTextField> {
               errorText: widget.showErrorInside ? widget.error : null,
               prefixStyle: context.primaryTitleSmall,
               suffixStyle: context.primaryTitleSmall,
-              hintStyle: context.bodySmall.copyWith(color: widget.hintColor ?? context.onPrimaryContainerColor),
+              hintStyle: context.bodySmall.copyWith(color: widget.hintColor ?? context.scheme.onPrimaryContainer),
               icon: widget.icon,
               isDense: widget.isDense,
               hintText: widget.hint,
@@ -118,7 +118,7 @@ class _XTextField2State extends State<XTextField> {
           SizedBox(height: XDimens.sPadding.h),
           XText(
             widget.error!,
-            color: context.errorColor,
+            color: context.scheme.error,
             align: TextAlign.start,
             margin: EdgeInsetsDirectional.only(start: XDimens.sPadding.h),
           ),

@@ -45,32 +45,33 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
         toolbarHeight: height ?? 56.h,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: color ?? context.backgroundColor,
+        backgroundColor: color ?? context.scheme.surface,
         title: Padding(
           padding: EdgeInsets.only(left: 5.h, right: 5.h),
           child: content ??
               XText(
                 title,
                 style: context.titleMedium,
-                color: titleColor ?? (color != null ? context.onPrimaryColor : context.onBackgroundColor),
+                color: titleColor ?? (color != null ? context.scheme.onPrimary : context.scheme.onSurface),
               ),
         ),
-        leading: hasBack ? Row(
-          children: [
-            _buildButton(
-                        context,
-                        XAssets.arrowLeft,
-                        backButtonColor,
-                        onBack ?? () => context.pop(),
-                      ),
-          ],
-        )
-                : const Row(
-                  children: [
-                     SizedBox(),
-                  ],
-                ),
-                actions: leadingAsset == null
+        leading: hasBack
+            ? Row(
+                children: [
+                  _buildButton(
+                    context,
+                    XAssets.arrowLeft,
+                    backButtonColor,
+                    onBack ?? () => context.pop(),
+                  ),
+                ],
+              )
+            : const Row(
+                children: [
+                  SizedBox(),
+                ],
+              ),
+        actions: leadingAsset == null
             ? [const SizedBox()]
             : [_buildLeadingButton(context, leadingAsset!, leadingButtonColor, onLeading ?? () {})],
       ),
@@ -85,10 +86,10 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
         height: 35.h,
         margin: const EdgeInsets.only(left: XDimens.sPadding).h,
         decoration: BoxDecoration(
-          color:
-              (boxColor) ?? (color == null ? context.primaryContainerColor : context.onPrimaryColor.withOpacity(0.1)),
+          color: (boxColor) ??
+              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
           border: Border.all(
-            color: iconBorderColor ?? (color == null ? context.outlineColor : context.onPrimaryColor),
+            color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,
           ),
           borderRadius: BorderRadius.circular(XDimens.sPadding),
@@ -98,7 +99,7 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
             asset,
             package: 'x_framework',
             colorFilter: ColorFilter.mode(
-              iconColor ?? (color == null ? context.onPrimaryContainerColor : context.onPrimaryColor),
+              iconColor ?? (color == null ? context.scheme.onPrimaryContainer : context.scheme.onPrimary),
               BlendMode.srcIn,
             ),
           ),
@@ -115,10 +116,10 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
         height: 35.h,
         margin: const EdgeInsets.only(right: XDimens.sPadding).h,
         decoration: BoxDecoration(
-          color:
-              (boxColor) ?? (color == null ? context.primaryContainerColor : context.onPrimaryColor.withOpacity(0.1)),
+          color: (boxColor) ??
+              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
           border: Border.all(
-            color: iconBorderColor ?? (color == null ? context.outlineColor : context.onPrimaryColor),
+            color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,
           ),
           borderRadius: BorderRadius.circular(XDimens.sPadding),
@@ -131,7 +132,7 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                   child: SvgPicture.asset(
                     asset,
                     colorFilter: ColorFilter.mode(
-                        iconColor ?? (color == null ? context.onPrimaryContainerColor : context.onPrimaryColor),
+                        iconColor ?? (color == null ? context.scheme.onPrimaryContainer : context.scheme.onPrimary),
                         BlendMode.srcIn),
                   ),
                 ),
@@ -140,7 +141,7 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 child: SvgPicture.asset(
                   asset,
                   colorFilter: ColorFilter.mode(
-                      iconColor ?? (color == null ? context.onPrimaryContainerColor : context.onPrimaryColor),
+                      iconColor ?? (color == null ? context.scheme.onPrimaryContainer : context.scheme.onPrimary),
                       BlendMode.srcIn),
                 ),
               ),

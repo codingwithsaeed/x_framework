@@ -15,26 +15,27 @@ abstract class XSheets {
   }) {
     showSheet(
       context,
-      titleColor: context.errorColor,
+      titleColor: context.scheme.error,
       hasCancelButton: false,
       actions: Row(
         children: [
           XTextButton(
-            color: context.errorColor,
-            borderColor: context.errorColor,
+            color: context.scheme.error,
+            borderColor: context.scheme.error,
             height: 35,
             onTap: onAccept,
             text: acceptText ?? 'بله',
-            textColor: context.onPrimaryColor,
+            textColor: context.scheme.onPrimary,
           ).expand(),
           const SizedBox(width: XDimens.sPadding),
           XTextButton(
             height: 35,
-            color: context.backgroundColor,
-            borderColor: context.isLight ? context.onPrimaryContainerColor.withOpacity(0.7) : context.onBackgroundColor,
+            color: context.scheme.surface,
+            borderColor:
+                context.isLight ? context.scheme.onPrimaryContainer.withOpacity(0.7) : context.scheme.onSurface,
             onTap: () => context.pop(),
             text: cancelText ?? 'خیر',
-            textColor: context.isLight ? context.onPrimaryContainerColor.withOpacity(0.7) : context.onBackgroundColor,
+            textColor: context.isLight ? context.scheme.onPrimaryContainer.withOpacity(0.7) : context.scheme.onSurface,
           ).expand(),
         ],
       ),
@@ -69,7 +70,7 @@ abstract class XSheets {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(XDimens.sPadding)),
       context: context,
       builder: (context) {
-        var titleColored = titleColor ?? (context.isLight ? context.primaryColor : context.onPrimaryContainerColor);
+        var titleColored = titleColor ?? (context.isLight ? context.scheme.primary : context.scheme.onPrimaryContainer);
         final MediaQueryData mediaQueryData = MediaQuery.of(context);
         return ScaffoldMessenger(
           child: Builder(builder: (context) {
@@ -79,7 +80,7 @@ abstract class XSheets {
                 constraints: BoxConstraints(maxHeight: maxHeight ?? mediaQueryData.size.height * 0.8),
                 margin: const EdgeInsets.all(XDimens.sPadding),
                 decoration: BoxDecoration(
-                  color: backgroundColor ?? context.backgroundColor,
+                  color: backgroundColor ?? context.scheme.surface,
                   borderRadius: BorderRadius.circular(XDimens.sPadding),
                 ),
                 child: SingleChildScrollView(
@@ -95,7 +96,7 @@ abstract class XSheets {
                             width: 64,
                             height: 3,
                             decoration: BoxDecoration(
-                              color: context.onSurfaceColor,
+                              color: context.scheme.inverseSurface,
                               borderRadius: BorderRadius.circular(XDimens.padding),
                             ),
                           ),
@@ -128,7 +129,7 @@ abstract class XSheets {
                                 content,
                                 style: context.bodyMedium.copyWith(
                                   height: 2,
-                                  color: contentColor ?? context.onBackgroundColor,
+                                  color: contentColor ?? context.scheme.onSurface,
                                 ),
                                 textAlign: centerContent ? TextAlign.center : TextAlign.start,
                               ),
@@ -140,15 +141,15 @@ abstract class XSheets {
                               SizedBox(height: XDimens.sPadding.h),
                               XTextButton(
                                 height: 35.h,
-                                color: context.backgroundColor,
+                                color: context.scheme.surface,
                                 borderColor: context.isLight
-                                    ? context.onPrimaryContainerColor.withOpacity(0.7)
-                                    : context.onBackgroundColor,
+                                    ? context.scheme.onPrimaryContainer.withOpacity(0.7)
+                                    : context.scheme.onSurface,
                                 onTap: onCancelTap ?? () => context.pop(),
                                 text: cancelButtonText ?? 'انصراف',
                                 textColor: context.isLight
-                                    ? context.onPrimaryContainerColor.withOpacity(0.7)
-                                    : context.onBackgroundColor,
+                                    ? context.scheme.onPrimaryContainer.withOpacity(0.7)
+                                    : context.scheme.onSurface,
                               ),
                             ],
                           ],
@@ -196,7 +197,7 @@ abstract class XSheets {
                 const EdgeInsets.fromLTRB(XDimens.sPadding, XDimens.xsPadding, XDimens.sPadding, XDimens.sPadding).h,
             margin: const EdgeInsets.all(XDimens.sPadding),
             decoration: BoxDecoration(
-              color: backgroundColor ?? context.backgroundColor,
+              color: backgroundColor ?? context.scheme.surface,
               borderRadius: BorderRadius.circular(XDimens.sPadding),
             ),
             child: Column(
@@ -208,7 +209,7 @@ abstract class XSheets {
                       width: 64,
                       height: 3,
                       decoration: BoxDecoration(
-                        color: context.onSurfaceColor,
+                        color: context.scheme.inverseSurface,
                         borderRadius: BorderRadius.circular(XDimens.padding),
                       ),
                     ),

@@ -36,9 +36,9 @@ class XText extends StatelessWidget {
           textDirection: direction,
           maxLines: maxLines ?? 1,
           overflow: TextOverflow.ellipsis,
-          style: style?.copyWith(color: color ?? context.onPrimaryContainerColor, fontSize: size) ??
+          style: style?.copyWith(color: color ?? context.scheme.onPrimaryContainer, fontSize: size) ??
               context.bodyMedium.copyWith(
-                color: color ?? context.onPrimaryContainerColor,
+                color: color ?? context.scheme.onPrimaryContainer,
                 fontSize: size,
               ),
         ),

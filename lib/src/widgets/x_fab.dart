@@ -29,12 +29,12 @@ class XFab extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color ?? context.primaryColor,
+            color: color ?? context.scheme.primary,
             border: Border.all(color: borderColor ?? Colors.transparent)),
         padding: contentPadding ?? const EdgeInsets.all(XDimens.sPadding),
         child: Icon(
           icon ?? Icons.add,
-          color: iconColor ?? context.onPrimaryColor,
+          color: iconColor ?? context.scheme.onPrimary,
           size: iconSize ?? 36,
         ),
       ),

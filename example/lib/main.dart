@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: XAppBar2(
         title: widget.title,
-        color: context.primaryColor,
+        color: context.scheme.primary,
         leadingAsset: 'assets/icons/arrow_left_ios.svg',
       ),
       body: Padding(

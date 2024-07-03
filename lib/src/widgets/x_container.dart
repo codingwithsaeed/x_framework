@@ -27,13 +27,13 @@ class XContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        color: color ?? context.backgroundColor,
+        color: color ?? context.scheme.surface,
         margin: margin ?? EdgeInsets.zero,
-        shadowColor: context.primaryColor,
-        surfaceTintColor: color ?? context.backgroundColor,
+        shadowColor: context.scheme.primary,
+        surfaceTintColor: color ?? context.scheme.surface,
         elevation: elevation ?? 0,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: borderColor ?? context.outlineColor),
+          side: BorderSide(color: borderColor ?? context.scheme.outline),
           borderRadius: borderRadius ?? BorderRadius.zero,
         ),
         child: Padding(
