@@ -51,7 +51,7 @@ class XCard extends StatelessWidget {
                   ),
             color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
             borderRadius: BorderRadius.circular(borderRadius ?? XDimens.padding),
-            border: Border.all(color: borderColor ?? context.outlineColor)),
+            border: Border.all(color: borderColor ?? context.scheme.outline)),
         child: Padding(
           padding: EdgeInsets.all(padding ?? 0),
           child: Center(child: child),

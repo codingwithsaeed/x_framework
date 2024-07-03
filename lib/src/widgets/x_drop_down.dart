@@ -44,8 +44,8 @@ class XDropDown<T> extends StatelessWidget {
               // ListView.separated(
               //   itemBuilder: (_, index) => XTextButton(
               //     text: items[index].toString(),
-              //     color: context.primaryContainerColor,
-              //     borderColor: context.outlineColor,
+              //     color: context.scheme.primaryContainer,
+              //     borderColor: context.scheme.outline,
               //     onTap: () {
               //       context.pop();
               //       onChanged?.call(items[index]);
@@ -61,8 +61,8 @@ class XDropDown<T> extends StatelessWidget {
                   .map(
                     (e) => XTextButton(
                       text: e.toString(),
-                      color: context.primaryContainerColor,
-                      borderColor: context.outlineColor,
+                      color: context.scheme.primaryContainer,
+                      borderColor: context.scheme.outline,
                       onTap: () {
                         context.pop();
                         onChanged?.call(e);
@@ -88,8 +88,8 @@ class XDropDown<T> extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(XDimens.sPadding),
-                color: backgroundColor ?? context.primaryContainerColor,
-                border: Border.all(color: borderColor ?? context.outlineColor)),
+                color: backgroundColor ?? context.scheme.primaryContainer,
+                border: Border.all(color: borderColor ?? context.scheme.outline)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(
@@ -103,12 +103,13 @@ class XDropDown<T> extends StatelessWidget {
                       textAlign: centerTitle ? TextAlign.center : TextAlign.start,
                       textDirection: isRtl ? TextDirection.rtl : TextDirection.ltr,
                       style: context.bodyMedium.copyWith(
-                          color: context.onPrimaryContainerColor,
+                          color: context.scheme.primaryContainer,
                           fontFamily: isRtl ? XFonts.iransans.name : XFonts.vazir.name),
                     ),
                   ),
                   showIcon
-                      ? XSvg(asset: XAssets.arrowDown, color: iconColor ?? context.outlineColor, package: 'x_framework')
+                      ? XSvg(
+                          asset: XAssets.arrowDown, color: iconColor ?? context.scheme.outline, package: 'x_framework')
                       : const SizedBox(),
                 ],
               ),

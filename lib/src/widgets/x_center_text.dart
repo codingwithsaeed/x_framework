@@ -19,7 +19,7 @@ class XCenterText extends StatelessWidget {
         text,
         style: style ??
             context.titleMedium.copyWith(
-              color: color ?? context.onPrimaryContainerColor.withOpacity(0.7),
+              color: color ?? context.scheme.primaryContainer.withOpacity(0.7),
             ),
       ),
     );

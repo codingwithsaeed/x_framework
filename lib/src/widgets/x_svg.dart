@@ -32,11 +32,11 @@ class XSvg extends StatelessWidget {
                   )
                 : SvgPicture.asset(
                     asset,
-                     package: package,
+                    package: package,
                     width: width,
                     height: height,
                     colorFilter: ColorFilter.mode(
-                      context.onPrimaryContainerColor,
+                      context.scheme.primaryContainer,
                       BlendMode.srcIn,
                     ),
                   )
@@ -44,7 +44,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
-                 package: package,
+                package: package,
                 colorFilter: ColorFilter.mode(
                   color!,
                   BlendMode.srcIn,
@@ -55,7 +55,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
-                 package: package,
+                package: package,
                 colorFilter: ColorFilter.mode(
                   color!,
                   BlendMode.srcIn,
@@ -65,7 +65,7 @@ class XSvg extends StatelessWidget {
                 asset,
                 width: width,
                 height: height,
-                 package: package,
+                package: package,
               );
   }
 }

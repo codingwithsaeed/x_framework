@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_framework/x_framework.dart';
 
-
 class XEditDeleteWidget extends StatelessWidget {
   final String? title;
   final Color? titleColor;
@@ -26,7 +25,7 @@ class XEditDeleteWidget extends StatelessWidget {
         if (title != null) ...[
           XText(
             title!,
-            color: titleColor ?? context.onSurfaceColor,
+            color: titleColor ?? context.scheme.inverseSurface,
             style: context.titleMedium,
           ),
           const SizedBox(height: XDimens.sPadding),
@@ -36,9 +35,9 @@ class XEditDeleteWidget extends StatelessWidget {
             XTextButton(
               text: editText ?? 'ویرایش',
               color:
-                  context.isDark ? context.onBackgroundColor.withOpacity(0.1) : context.primaryColor.withOpacity(0.1),
-              borderColor: context.isDark ? context.onBackgroundColor.withOpacity(0.8) : context.primaryColor,
-              textColor: context.isDark ? context.onBackgroundColor.withOpacity(0.8) : context.primaryColor,
+                  context.isDark ? context.scheme.onSurface.withOpacity(0.1) : context.scheme.primary.withOpacity(0.1),
+              borderColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
+              textColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
               onTap: () {
                 context.pop();
                 onEdit();
@@ -57,9 +56,9 @@ class XEditDeleteWidget extends StatelessWidget {
                   },
                 );
               },
-              color: context.errorColor.withOpacity(0.1),
-              borderColor: context.errorColor,
-              textColor: context.errorColor,
+              color: context.scheme.error.withOpacity(0.1),
+              borderColor: context.scheme.error,
+              textColor: context.scheme.error,
             ).expand(),
           ],
         ),
@@ -101,7 +100,7 @@ class XItemEditDeleteWidget extends StatelessWidget {
           icon: icon,
           showMore: false,
           iconColor: iconColor,
-          subtitle: subtitle != null ? XText(subtitle!, color: context.onSurfaceColor) : null,
+          subtitle: subtitle != null ? XText(subtitle!, color: context.scheme.inverseSurface) : null,
         ),
         const SizedBox(height: XDimens.sPadding),
         Row(
@@ -109,9 +108,9 @@ class XItemEditDeleteWidget extends StatelessWidget {
             XTextButton(
               text: editText ?? 'ویرایش',
               color:
-                  context.isDark ? context.onBackgroundColor.withOpacity(0.1) : context.primaryColor.withOpacity(0.1),
-              borderColor: context.isDark ? context.onBackgroundColor.withOpacity(0.8) : context.primaryColor,
-              textColor: context.isDark ? context.onBackgroundColor.withOpacity(0.8) : context.primaryColor,
+                  context.isDark ? context.scheme.onSurface.withOpacity(0.1) : context.scheme.primary.withOpacity(0.1),
+              borderColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
+              textColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
               onTap: () {
                 context.pop();
                 onEdit();
@@ -130,9 +129,9 @@ class XItemEditDeleteWidget extends StatelessWidget {
                   },
                 );
               },
-              color: context.errorColor.withOpacity(0.1),
-              borderColor: context.errorColor,
-              textColor: context.errorColor,
+              color: context.scheme.error.withOpacity(0.1),
+              borderColor: context.scheme.error,
+              textColor: context.scheme.error,
             ).expand(),
           ],
         ),
@@ -158,19 +157,19 @@ class XMoreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return XContainer(
-      color: context.primaryContainerColor,
+      color: context.scheme.primaryContainer,
       borderRadius: BorderRadius.circular(XDimens.sPadding),
       padding: const EdgeInsets.all(XDimens.sPadding + XDimens.xsPadding),
       child: Row(
         children: [
           if (icon != null) ...[
-            Icon(icon, color: iconColor ?? context.onSurfaceColor),
+            Icon(icon, color: iconColor ?? context.scheme.inverseSurface),
             const SizedBox(width: XDimens.sPadding),
           ],
           XText(title).expand(),
           if (value != null) ...[
             const SizedBox(width: XDimens.sPadding),
-            XText(value!, color: context.onSurfaceColor, align: TextAlign.end).expand(),
+            XText(value!, color: context.scheme.inverseSurface, align: TextAlign.end).expand(),
           ],
         ],
       ),

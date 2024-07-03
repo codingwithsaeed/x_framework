@@ -17,7 +17,7 @@ class XDivider extends StatelessWidget {
     return Divider(
       indent: indent,
       endIndent: indent,
-      color: color ?? context.outlineColor.withOpacity(0.7),
+      color: color ?? context.scheme.outline.withOpacity(0.7),
       thickness: thinkness,
     );
   }

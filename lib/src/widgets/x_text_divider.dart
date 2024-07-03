@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_framework/x_framework.dart';
 
-
 class XTextDivider extends StatelessWidget {
   final String text;
   final Color? color;
@@ -16,7 +15,7 @@ class XTextDivider extends StatelessWidget {
         XText(
           text,
           style: context.titleMedium,
-          color: context.onBackgroundColor.withOpacity(0.5),
+          color: context.scheme.onSurface.withOpacity(0.5),
         ),
         const XDivider().expand(),
       ],

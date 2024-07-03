@@ -43,24 +43,23 @@ class XButton extends StatelessWidget {
       highlightColor: highlightColor,
       splashColor: splashColor,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      disabledColor: disabledColor ?? context.onSurfaceColor.withOpacity(0.3),
+      disabledColor: disabledColor ?? context.scheme.inverseSurface.withOpacity(0.3),
       shape: RoundedRectangleBorder(
         side: BorderSide(
-            color: onTap == null ? (disabledColor ?? Colors.transparent) : (borderColor ?? context.primaryColor),
+            color: onTap == null ? (disabledColor ?? Colors.transparent) : (borderColor ?? context.scheme.primary),
             width: 1),
         borderRadius: BorderRadius.circular(radius ?? XDimens.sPadding),
       ),
       onPressed: isLoading ? null : onTap,
-      color: color ?? context.primaryColor,
+      color: color ?? context.scheme.primary,
       child: isLoading
           ? SizedBox(
               width: ((height ?? 35.h) / 2.5.h),
               height: ((height ?? 35.h) / 2.5.h),
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                color: loadingColor ?? (color != context.primaryColor
-                    ? context.primaryColor
-                    : context.onPrimaryContainerColor),
+                color: loadingColor ??
+                    (color != context.scheme.primary ? context.scheme.primary : context.scheme.primaryContainer),
               ),
             )
           : child,

@@ -11,7 +11,7 @@ class XLoading extends StatelessWidget {
     return Center(
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(
-          color ?? (context.isDark ? context.onSurfaceColor : context.primaryColor),
+          color ?? (context.isDark ? context.scheme.inverseSurface : context.scheme.primary),
         ),
         strokeWidth: thickness ?? 2,
       ),

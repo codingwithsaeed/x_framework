@@ -24,12 +24,12 @@ class XListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      leading: Icon(icon, color: iconColor ?? context.onSurfaceColor),
+      leading: Icon(icon, color: iconColor ?? context.scheme.inverseSurface),
       horizontalTitleGap: XDimens.padding,
-      tileColor: context.primaryContainerColor,
+      tileColor: context.scheme.primaryContainer,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(XDimens.sPadding),
-        side: BorderSide(color: context.outlineColor),
+        side: BorderSide(color: context.scheme.outline),
       ),
       title: XText(title, align: TextAlign.right),
       dense: true,
@@ -37,7 +37,7 @@ class XListItem extends StatelessWidget {
       trailing: showMore
           ? InkWell(
               onTap: onMoreTap,
-              child: Icon(Icons.more_horiz_rounded, color: context.onSurfaceColor),
+              child: Icon(Icons.more_horiz_rounded, color: context.scheme.inverseSurface),
             )
           : null,
     );
