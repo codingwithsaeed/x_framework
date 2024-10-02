@@ -74,7 +74,7 @@ class _XTextField2State extends State<XTextField> {
         ],
         Container(
           padding: widget.contentPadding ??
-              EdgeInsets.symmetric(vertical: XDimens.xsPadding.h, horizontal: XDimens.sPadding.h).h,
+              EdgeInsets.symmetric(vertical: XDimens.xsPadding.h + 2, horizontal: XDimens.sPadding.h).h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(XDimens.sPadding),
               color: widget.color ?? context.scheme.primaryContainer,
