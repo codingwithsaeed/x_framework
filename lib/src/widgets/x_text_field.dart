@@ -5,7 +5,7 @@ import 'package:x_framework/x_framework.dart';
 
 class XTextField extends StatefulWidget {
   const XTextField({
-    Key? key,
+    super.key,
     this.isMultiLine = false,
     this.onChange,
     this.controller,
@@ -29,7 +29,7 @@ class XTextField extends StatefulWidget {
     this.isDense = true,
     this.title,
     this.centerTitle = false,
-  }) : super(key: key);
+  });
   final TextEditingController? controller;
   final bool isMultiLine;
   final bool centerTitle;
@@ -73,7 +73,8 @@ class _XTextField2State extends State<XTextField> {
           SizedBox(height: XDimens.xsPadding.h),
         ],
         Container(
-          padding: widget.contentPadding ?? EdgeInsets.symmetric(horizontal: XDimens.sPadding.h).h,
+          padding: widget.contentPadding ??
+              EdgeInsets.symmetric(vertical: XDimens.xsPadding.h, horizontal: XDimens.sPadding.h).h,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(XDimens.sPadding),
               color: widget.color ?? context.scheme.primaryContainer,
