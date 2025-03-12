@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: XAppBar2(
         title: widget.title,
         color: context.scheme.primary,
-        leadingAsset: 'assets/icons/arrow_left_ios.svg',
+        leadingAsset: 'assets/icons/arrow_down_ios.svg',
       ),
       body: Padding(
         padding: EdgeInsets.all(XDimens.sPadding.h),

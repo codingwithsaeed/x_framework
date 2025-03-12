@@ -55,10 +55,10 @@ class XTextField extends StatefulWidget {
   final EdgeInsetsGeometry? contentPadding;
 
   @override
-  State<XTextField> createState() => _XTextField2State();
+  State<XTextField> createState() => _XTextFieldState();
 }
 
-class _XTextField2State extends State<XTextField> {
+class _XTextFieldState extends State<XTextField> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,8 +73,7 @@ class _XTextField2State extends State<XTextField> {
           SizedBox(height: XDimens.xsPadding.h),
         ],
         Container(
-          padding: widget.contentPadding ??
-              EdgeInsets.symmetric(vertical: XDimens.xsPadding.h + 1, horizontal: XDimens.sPadding.h).h,
+          padding: widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(XDimens.sPadding),
               color: widget.color ?? context.scheme.primaryContainer,
