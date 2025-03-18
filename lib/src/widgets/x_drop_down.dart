@@ -4,7 +4,7 @@ import 'package:x_framework/x_framework.dart';
 
 class XDropDown<T> extends StatelessWidget {
   const XDropDown({
-    Key? key,
+    super.key,
     this.showIcon = true,
     this.isRtl = true,
     this.iconColor,
@@ -17,7 +17,7 @@ class XDropDown<T> extends StatelessWidget {
     this.centerValue = false,
     this.centerTitle = false,
     this.title,
-  }) : super(key: key);
+  });
   final String? hint;
   final String value;
   final bool showIcon;

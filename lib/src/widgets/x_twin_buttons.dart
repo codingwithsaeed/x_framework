@@ -3,7 +3,7 @@ import 'package:x_framework/x_framework.dart';
 
 class XTwinButtons extends StatelessWidget {
   const XTwinButtons({
-    Key? key,
+    super.key,
     this.confirmAction,
     this.cancelAction,
     this.margin,
@@ -16,7 +16,7 @@ class XTwinButtons extends StatelessWidget {
     this.confirmTextColor,
     this.cancelBorderColor,
     this.cancelTextColor,
-  }) : super(key: key);
+  });
   final VoidCallback? confirmAction;
   final String? confirmText;
   final VoidCallback? cancelAction;
@@ -52,12 +52,12 @@ class XTwinButtons extends StatelessWidget {
           Expanded(
             child: XTextButton(
               color: context.scheme.surface,
-              borderColor: cancelBorderColor ?? context.scheme.onPrimaryContainer.withOpacity(0.7),
+              borderColor: cancelBorderColor ?? context.scheme.onPrimaryContainer.withAlpha(180),
               height: buttonsHeight ?? 35,
               onTap: cancelAction ?? () => Navigator.pop(context),
               text: cancelText ?? 'انصراف',
               textStyle: context.bodyLarge,
-              textColor: cancelTextColor ?? context.scheme.onPrimaryContainer.withOpacity(0.7),
+              textColor: cancelTextColor ?? context.scheme.onPrimaryContainer.withAlpha(180),
             ),
           ),
         ],

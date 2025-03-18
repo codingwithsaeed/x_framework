@@ -6,18 +6,18 @@ class XDivider extends StatelessWidget {
   final double? thinkness;
   final Color? color;
   const XDivider({
-    Key? key,
+    super.key,
     this.indent = XDimens.xlPadding,
     this.color,
     this.thinkness,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Divider(
       indent: indent,
       endIndent: indent,
-      color: color ?? context.scheme.outline.withOpacity(0.7),
+      color: color ?? context.scheme.outline.withAlpha(180),
       thickness: thinkness,
     );
   }

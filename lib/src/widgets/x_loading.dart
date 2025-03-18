@@ -4,7 +4,7 @@ import 'package:x_framework/x_framework.dart';
 class XLoading extends StatelessWidget {
   final Color? color;
   final double? thickness;
-  const XLoading({Key? key, this.color, this.thickness}) : super(key: key);
+  const XLoading({super.key, this.color, this.thickness});
 
   @override
   Widget build(BuildContext context) {

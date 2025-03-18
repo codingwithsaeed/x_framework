@@ -20,7 +20,7 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
 
   const XAppBar2({
-    Key? key,
+    super.key,
     required this.title,
     this.leadingAsset,
     this.onLeading,
@@ -35,13 +35,14 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
     this.backButtonColor,
     this.hasBack = true,
     this.leadingBadge = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: AppBar(
+        elevation: 0,
         toolbarHeight: height ?? 56.h,
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -86,8 +87,8 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
         height: 35.h,
         margin: const EdgeInsets.only(left: XDimens.sPadding).h,
         decoration: BoxDecoration(
-          color: (boxColor) ??
-              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
+          color:
+              (boxColor) ?? (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withAlpha(26)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,
@@ -116,8 +117,8 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
         height: 35.h,
         margin: const EdgeInsets.only(right: XDimens.sPadding).h,
         decoration: BoxDecoration(
-          color: (boxColor) ??
-              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
+          color:
+              (boxColor) ?? (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withAlpha(26)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,

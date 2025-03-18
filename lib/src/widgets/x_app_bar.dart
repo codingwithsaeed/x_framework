@@ -20,7 +20,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
 
   const XAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.leadingAsset,
     this.onLeading,
@@ -35,7 +35,7 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backButtonColor,
     this.hasBack = true,
     this.leadingBadge = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +90,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 40.h,
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
-          color: (boxColor) ??
-              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
+          color:
+              (boxColor) ?? (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withAlpha(26)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,
@@ -120,8 +120,8 @@ class XAppBar extends StatelessWidget implements PreferredSizeWidget {
         height: 40.h,
         margin: EdgeInsets.all(XDimens.sPadding.h).h,
         decoration: BoxDecoration(
-          color: (boxColor) ??
-              (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withOpacity(0.1)),
+          color:
+              (boxColor) ?? (color == null ? context.scheme.primaryContainer : context.scheme.onPrimary.withAlpha(26)),
           border: Border.all(
             color: iconBorderColor ?? (color == null ? context.scheme.outline : context.scheme.onPrimary),
             width: 1,

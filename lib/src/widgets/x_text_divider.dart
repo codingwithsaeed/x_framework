@@ -5,7 +5,7 @@ class XTextDivider extends StatelessWidget {
   final String text;
   final Color? color;
 
-  const XTextDivider({Key? key, required this.text, this.color}) : super(key: key);
+  const XTextDivider({super.key, required this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class XTextDivider extends StatelessWidget {
         XText(
           text,
           style: context.titleMedium,
-          color: context.scheme.onSurface.withOpacity(0.5),
+          color: context.scheme.onSurface.withAlpha(128),
         ),
         const XDivider().expand(),
       ],

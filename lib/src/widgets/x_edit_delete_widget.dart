@@ -34,10 +34,9 @@ class XEditDeleteWidget extends StatelessWidget {
           children: [
             XTextButton(
               text: editText ?? 'ویرایش',
-              color:
-                  context.isDark ? context.scheme.onSurface.withOpacity(0.1) : context.scheme.primary.withOpacity(0.1),
-              borderColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
-              textColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
+              color: context.isDark ? context.scheme.onSurface.withAlpha(26) : context.scheme.primary.withAlpha(26),
+              borderColor: context.isDark ? context.scheme.onSurface.withAlpha(204) : context.scheme.primary,
+              textColor: context.isDark ? context.scheme.onSurface.withAlpha(204) : context.scheme.primary,
               onTap: () {
                 context.pop();
                 onEdit();
@@ -56,7 +55,7 @@ class XEditDeleteWidget extends StatelessWidget {
                   },
                 );
               },
-              color: context.scheme.error.withOpacity(0.1),
+              color: context.scheme.error.withAlpha(26),
               borderColor: context.scheme.error,
               textColor: context.scheme.error,
             ).expand(),
@@ -107,10 +106,9 @@ class XItemEditDeleteWidget extends StatelessWidget {
           children: [
             XTextButton(
               text: editText ?? 'ویرایش',
-              color:
-                  context.isDark ? context.scheme.onSurface.withOpacity(0.1) : context.scheme.primary.withOpacity(0.1),
-              borderColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
-              textColor: context.isDark ? context.scheme.onSurface.withOpacity(0.8) : context.scheme.primary,
+              color: context.isDark ? context.scheme.onSurface.withAlpha(26) : context.scheme.primary.withAlpha(26),
+              borderColor: context.isDark ? context.scheme.onSurface.withAlpha(204) : context.scheme.primary,
+              textColor: context.isDark ? context.scheme.onSurface.withAlpha(204) : context.scheme.primary,
               onTap: () {
                 context.pop();
                 onEdit();
@@ -129,7 +127,7 @@ class XItemEditDeleteWidget extends StatelessWidget {
                   },
                 );
               },
-              color: context.scheme.error.withOpacity(0.1),
+              color: context.scheme.error.withAlpha(26),
               borderColor: context.scheme.error,
               textColor: context.scheme.error,
             ).expand(),

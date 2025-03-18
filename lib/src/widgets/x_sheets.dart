@@ -31,11 +31,10 @@ abstract class XSheets {
           XTextButton(
             height: 35,
             color: context.scheme.surface,
-            borderColor:
-                context.isLight ? context.scheme.onPrimaryContainer.withOpacity(0.7) : context.scheme.onSurface,
+            borderColor: context.isLight ? context.scheme.onPrimaryContainer.withAlpha(180) : context.scheme.onSurface,
             onTap: () => context.pop(),
             text: cancelText ?? 'خیر',
-            textColor: context.isLight ? context.scheme.onPrimaryContainer.withOpacity(0.7) : context.scheme.onSurface,
+            textColor: context.isLight ? context.scheme.onPrimaryContainer.withAlpha(180) : context.scheme.onSurface,
           ).expand(),
         ],
       ),
@@ -143,12 +142,12 @@ abstract class XSheets {
                                 height: 35.h,
                                 color: context.scheme.surface,
                                 borderColor: context.isLight
-                                    ? context.scheme.onPrimaryContainer.withOpacity(0.7)
+                                    ? context.scheme.onPrimaryContainer.withAlpha(180)
                                     : context.scheme.onSurface,
                                 onTap: onCancelTap ?? () => context.pop(),
                                 text: cancelButtonText ?? 'انصراف',
                                 textColor: context.isLight
-                                    ? context.scheme.onPrimaryContainer.withOpacity(0.7)
+                                    ? context.scheme.onPrimaryContainer.withAlpha(180)
                                     : context.scheme.onSurface,
                               ),
                             ],

@@ -6,11 +6,11 @@ class XCenterText extends StatelessWidget {
   final TextStyle? style;
   final Color? color;
   const XCenterText({
-    Key? key,
+    super.key,
     required this.text,
     this.style,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class XCenterText extends StatelessWidget {
         text,
         style: style ??
             context.titleMedium.copyWith(
-              color: color ?? context.scheme.onPrimaryContainer.withOpacity(0.7),
+              color: color ?? context.scheme.onPrimaryContainer.withAlpha(180),
             ),
       ),
     );

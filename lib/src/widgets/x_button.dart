@@ -18,7 +18,7 @@ class XButton extends StatelessWidget {
   final double elevation;
 
   const XButton({
-    Key? key,
+    super.key,
     required this.child,
     this.onTap,
     this.color,
@@ -32,7 +32,7 @@ class XButton extends StatelessWidget {
     this.highlightColor,
     this.splashColor,
     this.loadingColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class XButton extends StatelessWidget {
       highlightColor: highlightColor,
       splashColor: splashColor,
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      disabledColor: disabledColor ?? context.scheme.inverseSurface.withOpacity(0.3),
+      disabledColor: disabledColor ?? context.scheme.inverseSurface.withAlpha(77),
       shape: RoundedRectangleBorder(
         side: BorderSide(
             color: onTap == null ? (disabledColor ?? Colors.transparent) : (borderColor ?? context.scheme.primary),

@@ -19,7 +19,7 @@ class XTextButton extends StatelessWidget {
   final double elevation;
 
   const XTextButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onTap,
     this.color,
@@ -34,7 +34,7 @@ class XTextButton extends StatelessWidget {
     this.textSize,
     this.textStyle,
     this.loadingColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

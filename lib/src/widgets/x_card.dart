@@ -11,7 +11,7 @@ class XCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final bool isGradient;
   const XCard({
-    Key? key,
+    super.key,
     this.backgroundColor,
     this.borderColor,
     this.borderRadius,
@@ -20,7 +20,7 @@ class XCard extends StatelessWidget {
     this.margin,
     this.isGradient = false,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +35,18 @@ class XCard extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      backgroundColor?.withOpacity(1) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.9) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.8) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.7) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.6) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.4) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.3) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.2) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.1) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.09) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.07) ?? Theme.of(context).scaffoldBackgroundColor,
-                      backgroundColor?.withOpacity(0.05) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(230) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(204) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(180) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(153) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(102) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(77) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(51) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(26) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(23) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(18) ?? Theme.of(context).scaffoldBackgroundColor,
+                      backgroundColor?.withAlpha(13) ?? Theme.of(context).scaffoldBackgroundColor,
                     ],
                   ),
             color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,

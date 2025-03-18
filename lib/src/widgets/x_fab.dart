@@ -11,7 +11,7 @@ class XFab extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
 
   const XFab({
-    Key? key,
+    super.key,
     this.icon,
     this.color,
     this.onTap,
@@ -19,7 +19,7 @@ class XFab extends StatelessWidget {
     this.iconColor,
     this.borderColor,
     this.contentPadding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

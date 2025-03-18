@@ -1,4 +1,4 @@
-library x_framework;
+library;
 
 export 'src/core/consts/x_dimens.dart';
 export 'src/core/consts/x_assets.dart';
