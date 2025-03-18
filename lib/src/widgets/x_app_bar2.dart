@@ -43,12 +43,13 @@ class XAppBar2 extends StatelessWidget implements PreferredSizeWidget {
       textDirection: TextDirection.ltr,
       child: AppBar(
         elevation: 0,
+        scrolledUnderElevation: 0,
         toolbarHeight: height ?? 56.h,
         automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: color ?? context.scheme.surface,
         title: Padding(
-          padding: EdgeInsets.only(left: 5.h, right: 5.h),
+          padding: EdgeInsets.only(left: 4.h, right: 4.h),
           child: content ??
               XText(
                 title,
